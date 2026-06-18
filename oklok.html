@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>O'KLOK — Refresh Yourself | Coffee, Tea & All-Day Cafe in Hyderabad</title>
+<meta name="description" content="O'KLOK is Hyderabad's everyday coffee destination near Raidurg Metro, Hitech City — fresh filter coffee, chai, rolls, sandwiches, juices and shakes. Refresh Yourself." />
+<meta property="og:title" content="O'KLOK — Refresh Yourself" />
+<meta property="og:description" content="Your everyday coffee destination for fresh brews, snacks, and conversations." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;0,900;1,500&family=Work+Sans:wght@300;400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: "#07211A",
+          forest: { DEFAULT: "#0E3B2E", light: "#1B5544", dark: "#082420" },
+          gold: { DEFAULT: "#D4AF37", soft: "#E8CD7A", deep: "#A9821F" },
+          cream: { DEFAULT: "#F5EEDC", dim: "#CBC0A0" },
+        },
+        fontFamily: {
+          display: ["Fraunces", "serif"],
+          body: ["Work Sans", "sans-serif"],
+          script: ["Caveat", "cursive"],
+        },
+        keyframes: {
+          steam: {
+            "0%": { transform: "translateY(0) scaleX(1)", opacity: "0" },
+            "15%": { opacity: "0.5" },
+            "100%": { transform: "translateY(-60px) scaleX(1.4)", opacity: "0" },
+          },
+          float: {
+            "0%,100%": { transform: "translateY(0px) rotate(0deg)" },
+            "50%": { transform: "translateY(-14px) rotate(6deg)" },
+          },
+          fadeUp: {
+            "0%": { opacity: "0", transform: "translateY(28px)" },
+            "100%": { opacity: "1", transform: "translateY(0)" },
+          },
+          blink: {
+            "0%, 100%": { opacity: 1 },
+            "50%": { opacity: 0 },
+          },
+          ray: {
+            "0%, 100%": { opacity: 0.1, transform: "rotate(35deg) scaleY(1)" },
+            "50%": { opacity: 0.2, transform: "rotate(35deg) scaleY(1.2)" },
+          },
+          dust: {
+            "0%": { transform: "translate(0, 0)", opacity: 0 },
+            "50%": { opacity: 0.6 },
+            "100%": { transform: "translate(20px, -40px)", opacity: 0 },
+          }
+        },
+        animation: {
+          steam: "steam 3.5s ease-in-out infinite",
+          float: "float 6s ease-in-out infinite",
+          fadeUp: "fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) forwards",
+          blink: "blink 1s step-end infinite",
+          ray: "ray 8s ease-in-out infinite",
+          dust: "dust 10s ease-in-out infinite",
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#0E3B2E; color:#F5EEDC; overflow-x:hidden; }
+  h1,h2,h3,h4,.font-display { font-family:"Fraunces",serif; }
+
+  ::-webkit-scrollbar { width:10px; }
+  ::-webkit-scrollbar-track { background:#082420; }
+  ::-webkit-scrollbar-thumb { background:#A9821F; border-radius:999px; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline:2px solid #D4AF37; outline-offset:3px; border-radius:4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration:.001ms !important;
+      transition-duration:.001ms !important;
+      scroll-behavior:auto !important;
+    }
+  }
+
+  .grain-overlay {
+    position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .divider-gold { height:1px; background:linear-gradient(to right, transparent, rgba(212,175,55,.7), transparent); }
+  .text-gradient-gold {
+    background:linear-gradient(110deg,#A9821F 10%,#F3DA8A 45%,#A9821F 80%);
+    background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .bg-radial-fade { background:radial-gradient(circle at 50% 30%, rgba(212,175,55,.12), transparent 60%); }
+  .wax-seal {
+    width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(circle at 35% 30%, #E8CD7A, #A9821F 70%, #82640F 100%);
+    color:#082420; font-family:"Fraunces",serif; font-weight:600;
+    box-shadow:0 4px 14px rgba(0,0,0,.45), inset 0 0 0 2px rgba(8,36,32,.25);
+  }
+  .shadow-gold { box-shadow:0 0 0 1px rgba(212,175,55,.35), 0 8px 30px rgba(0,0,0,.35); }
+  .reveal { opacity:0; transform:translateY(40px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in-view { opacity:1; transform:translateY(0); }
+  .reveal-left { opacity:0; transform:translateX(-60px); transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
+  .reveal-left.in-view { opacity:1; transform:translateX(0); }
+  .reveal-right { opacity:0; transform:translateX(60px); transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
+  .reveal-right.in-view { opacity:1; transform:translateX(0); }
+  .stagger > * { opacity:0; }
+  .gallery-card { transition: border-color .5s, box-shadow .5s; }
+  .gallery-card img { transition: transform .7s ease, filter .7s ease; }
+  .gallery-card:hover img { transform:scale(1.1); filter:blur(1px); }
+  .gallery-card:hover { border-color: rgba(212,175,55,.6); box-shadow:0 0 0 1px rgba(212,175,55,.35), 0 8px 30px rgba(0,0,0,.35); }
+  .gallery-caption { opacity:0; transform:translateY(12px); transition:opacity .4s, transform .4s; }
+  .gallery-card:hover .gallery-caption { opacity:1; transform:translateY(0); }
+  .gallery-overlay { background:rgba(8,36,32,0); transition:background .5s; }
+  .gallery-card:hover .gallery-overlay { background:rgba(8,36,32,.3); }
+  .menu-card { transition: transform .25s, box-shadow .25s; }
+  .menu-card:hover { transform:translateY(-6px); box-shadow:0 18px 40px rgba(0,0,0,.45); }
+  .tab-btn.active { background:#D4AF37; color:#082420; border-color:#D4AF37; }
+  .step-card { transition: transform .4s ease; }
+  .nav-link { position:relative; }
+  .nav-link::after { content:""; position:absolute; left:0; bottom:-4px; height:1px; width:0; background:#D4AF37; transition:width .3s; }
+  .nav-link:hover::after { width:100%; }
+  .snap-x { scroll-snap-type:x mandatory; }
+  .testimonial-slide { transition: opacity .5s ease, transform .5s ease; }
+</style>
+</head>
+
+<body class="font-body antialiased selection:bg-gold selection:text-forest-dark">
+
+<!-- ============ NAVBAR ============ -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-6">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
+    <a href="#hero" class="flex items-center gap-2">
+      <img src="Logo.png" alt="O'KLOK Logo" class="h-12 w-auto drop-shadow-lg transition-transform hover:scale-105" />
+    </a>
+    <nav class="hidden items-center gap-8 lg:flex">
+      <a href="#hero" class="nav-link text-sm uppercase tracking-[0.15em] text-cream/80 hover:text-gold">Home</a>
+      <a href="#story" class="nav-link text-sm uppercase tracking-[0.15em] text-cream/80 hover:text-gold">Our Story</a>
+      <a href="#menu" class="nav-link text-sm uppercase tracking-[0.15em] text-cream/80 hover:text-gold">Menu</a>
+      <a href="#gallery" class="nav-link text-sm uppercase tracking-[0.15em] text-cream/80 hover:text-gold">Gallery</a>
+      <a href="#visit" class="nav-link text-sm uppercase tracking-[0.15em] text-cream/80 hover:text-gold">Visit Us</a>
+    </nav>
+    <a href="#visit" class="hidden rounded-full border border-gold px-5 py-2 text-sm uppercase tracking-wider text-gold transition-colors hover:bg-gold hover:text-forest-dark lg:block">Visit Us</a>
+    <button id="menuToggle" aria-label="Toggle menu" class="text-cream lg:hidden">
+      <svg id="iconMenu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg id="iconClose" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav id="mobileMenu" class="hidden overflow-hidden bg-forest-dark/95 backdrop-blur-md lg:hidden">
+    <div class="flex flex-col gap-1 px-6 py-4">
+      <a href="#hero" class="py-3 text-sm uppercase tracking-[0.15em] text-cream/85 border-b border-cream/10">Home</a>
+      <a href="#story" class="py-3 text-sm uppercase tracking-[0.15em] text-cream/85 border-b border-cream/10">Our Story</a>
+      <a href="#menu" class="py-3 text-sm uppercase tracking-[0.15em] text-cream/85 border-b border-cream/10">Menu</a>
+      <a href="#gallery" class="py-3 text-sm uppercase tracking-[0.15em] text-cream/85 border-b border-cream/10">Gallery</a>
+      <a href="#visit" class="py-3 text-sm uppercase tracking-[0.15em] text-cream/85">Visit Us</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="hero" class="relative h-screen w-full overflow-hidden bg-forest-dark">
+  <video autoplay loop muted playsinline class="absolute inset-0 h-full w-full object-cover z-0">
+    <source src="video%20(12).mp4" type="video/mp4" />
+  </video>
+  <div class="absolute inset-0 bg-gradient-to-b from-forest-dark/60 via-forest-dark/75 to-forest-dark z-0"></div>
+  <div class="grain-overlay z-0"></div>
+  <div class="absolute inset-0 bg-radial-fade z-0"></div>
+
+  <!-- Floating Ambient Elements -->
+  <div class="absolute inset-0 z-10 overflow-hidden pointer-events-none">
+    <!-- Light Rays -->
+    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[120%] bg-gradient-to-r from-transparent via-gold/10 to-transparent blur-3xl animate-ray origin-top-left"></div>
+    <div class="absolute top-[20%] right-[10%] w-[30%] h-[100%] bg-gradient-to-r from-transparent via-gold/5 to-transparent blur-3xl animate-ray origin-top-right" style="animation-delay: -4s"></div>
+    
+    <!-- Floating Beans -->
+    <div class="absolute top-[20%] left-[80%] text-2xl opacity-40 animate-float" style="animation-delay: 0s">☕</div>
+    <div class="absolute top-[60%] left-[85%] text-xl opacity-30 animate-float" style="animation-delay: 1.5s">🌿</div>
+    <div class="absolute top-[30%] left-[10%] text-xl opacity-50 animate-float" style="animation-delay: 2.5s">✨</div>
+    <div class="absolute top-[75%] left-[15%] text-3xl opacity-20 animate-float" style="animation-delay: 0.8s">☕</div>
+    
+    <!-- Steam / Dust Particles -->
+    <div class="absolute top-[50%] left-[40%] w-2 h-2 rounded-full bg-cream/20 blur-[1px] animate-dust" style="animation-delay: 0s"></div>
+    <div class="absolute top-[70%] left-[60%] w-1 h-1 rounded-full bg-gold/30 blur-[1px] animate-dust" style="animation-delay: 3s"></div>
+    <div class="absolute top-[30%] left-[70%] w-3 h-3 rounded-full bg-cream/10 blur-[2px] animate-dust" style="animation-delay: 5s"></div>
+    <div class="absolute top-[80%] left-[30%] w-2 h-2 rounded-full bg-gold/20 blur-[1px] animate-dust" style="animation-delay: 7s"></div>
+  </div>
+
+  <!-- Left-aligned Hero Content -->
+  <div class="relative z-20 flex items-center justify-start max-w-7xl mx-auto h-full px-6 pt-20">
+    <div class="max-w-2xl animate-fadeUp relative">
+
+      <span class="inline-block mb-4 font-script text-xl tracking-wider text-gold-soft relative z-10">☕ Hyderabad's Favorite Coffee Spot</span>
+      
+      <h1 class="font-display text-5xl font-semibold tracking-tight text-cream sm:text-6xl md:text-7xl leading-tight relative z-10">
+        O'KLOK
+        <span class="block text-3xl sm:text-4xl text-gradient-gold mt-2 italic">Refresh Yourself</span>
+      </h1>
+      
+      <p class="mt-6 text-base text-cream/80 sm:text-lg leading-relaxed max-w-lg relative z-10">
+        Fresh brews, comforting bites, and conversations that feel like home.
+      </p>
+
+      <!-- Typing Effect Container -->
+      <div class="mt-8 mb-8 min-h-[4rem] sm:min-h-[3rem] flex flex-wrap items-center relative z-10">
+        <span class="font-display text-2xl sm:text-3xl text-gold" id="typewriter"></span><span class="text-2xl sm:text-3xl text-gold animate-blink">|</span>
+      </div>
+
+      <p class="mb-10 text-sm text-cream/60 sm:text-base leading-relaxed border-l-2 border-gold/30 pl-4 relative z-10">
+        From freshly brewed filter coffee to delicious snacks and refreshing shakes, O'KLOK is where every break becomes a memorable experience.
+      </p>
+
+      <div class="flex flex-col gap-4 sm:flex-row relative z-10">
+        <a href="#menu" class="flex items-center justify-center gap-2 rounded-full bg-gold px-8 py-3 text-sm font-medium uppercase tracking-wider text-forest-dark transition-all hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105">Explore Menu</a>
+        <a href="#visit" class="flex items-center justify-center gap-2 rounded-full border border-gold/50 bg-forest-dark/50 px-8 py-3 text-sm font-medium uppercase tracking-wider text-cream transition-all hover:border-gold hover:text-gold hover:shadow-[0_0_15px_rgba(212,175,55,0.2)]">Visit Us</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/50 animate-bounce z-20">
+    <p class="mb-2 text-xs uppercase tracking-widest text-gold-soft">Scroll down</p>
+    <div class="mx-auto h-9 w-5 rounded-full border border-cream/30 p-1"><span class="block h-1.5 w-1.5 rounded-full bg-gold mx-auto"></span></div>
+  </div>
+</section>
+
+<!-- ============ OUR STORY ============ -->
+<section id="story" class="relative overflow-hidden bg-forest py-28">
+  <svg class="absolute bottom-0 left-0 w-full text-forest-dark/60" viewBox="0 0 1440 200" preserveAspectRatio="none">
+    <path d="M0 200 L160 70 L320 150 L520 40 L760 160 L980 60 L1200 140 L1440 80 L1440 200 Z" fill="currentColor"/>
+  </svg>
+  <div class="grain-overlay"></div>
+  <div class="relative mx-auto max-w-7xl px-6">
+    <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
+      <!-- Video Side -->
+      <div class="reveal-left relative overflow-hidden rounded-3xl border border-gold/20 shadow-[0_0_40px_rgba(212,175,55,0.15)] aspect-video lg:aspect-square">
+        <video autoplay loop muted playsinline class="absolute inset-0 h-full w-full object-cover">
+          <source src="Our%20Story.mp4" type="video/mp4" />
+        </video>
+        <!-- Overlay gradient to ensure text readability -->
+        <div class="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent"></div>
+        <p class="absolute bottom-6 left-6 right-6 font-script text-2xl text-gold-soft leading-relaxed text-center sm:text-3xl">
+          &ldquo;It's not just coffee.<br/>It's our story in every sip.&rdquo;
+        </p>
+      </div>
+
+      <!-- Narrative Side -->
+      <div class="reveal-right flex flex-col justify-center">
+        <span class="mb-4 font-script text-2xl text-gold-soft">Our Story</span>
+        <h2 class="mb-8 font-display text-4xl text-cream sm:text-5xl leading-tight">The Journey of O'KLOK</h2>
+        
+        <div class="space-y-6 text-base text-cream/80 sm:text-lg leading-relaxed">
+          <p>
+            A small idea brewed over endless cups of coffee and late-night conversations. O'KLOK was born to create a space where everyone feels completely at home, escaping the rush of the city.
+          </p>
+          <p>
+            From our humble beginnings as a tiny cafe to a thriving community of coffee lovers, our passion has never wavered. Your love has helped us grow, one cup, one conversation, and one connection at a time.
+          </p>
+          <p>
+            As we look to the future, our promise remains simple: to innovate, to serve, and to evolve. We continue to source the finest beans, craft comforting bites, and bring you better experiences every single day. The journey has just begun.
+          </p>
+        </div>
+
+        <div class="mt-10 flex items-center gap-4">
+          <div class="h-px w-12 bg-gold"></div>
+          <span class="font-display text-sm uppercase tracking-widest text-gold">Since 2024</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU ============ -->
+<section id="menu" class="relative bg-ink py-28">
+  <div class="grain-overlay"></div>
+  <div class="relative mx-auto max-w-6xl px-6">
+    <div class="mb-12 text-center">
+      <span class="font-script text-2xl text-gold-soft">What we're pouring</span>
+      <h2 class="mt-1 font-display text-4xl text-cream sm:text-5xl">The Menu</h2>
+    </div>
+
+    <div class="mx-auto mb-10 max-w-md">
+      <div class="flex items-center gap-3 rounded-full border border-gold/25 bg-forest-dark/50 px-5 py-3">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="menuSearch" type="text" placeholder="Search the menu — try 'maggi' or 'shake'" class="w-full bg-transparent text-sm text-cream placeholder:text-cream/40 focus:outline-none" />
+      </div>
+    </div>
+
+    <div id="menuGrid" class="columns-1 md:columns-2 lg:columns-3 gap-8 sm:gap-12 w-full"></div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery" class="relative bg-forest py-28">
+  <div class="grain-overlay"></div>
+  <div class="relative mx-auto max-w-6xl px-6">
+    <div class="mb-14 text-center">
+      <span class="font-script text-2xl text-gold-soft">Inside O'KLOK</span>
+      <h2 class="mt-1 font-display text-4xl text-cream sm:text-5xl">Gallery</h2>
+    </div>
+    <div id="galleryGrid" class="columns-1 gap-4 sm:columns-2 lg:columns-3 [&>*]:mb-4"></div>
+  </div>
+</section>
+
+<!-- ============ VISIT US ============ -->
+<section id="visit" class="relative overflow-hidden bg-ink py-28">
+  <div class="grain-overlay"></div>
+  <div id="visitBeans"></div>
+  <div class="relative mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2 lg:items-center">
+    <div class="reveal-left">
+      <span class="font-script text-2xl text-gold-soft">Drop by</span>
+      <h2 class="mt-1 font-display text-4xl text-cream sm:text-5xl">Visit O'KLOK</h2>
+      <address class="mt-6 not-italic leading-relaxed text-cream/80">
+        <span class="block">Raidurg Metro Station,</span>
+        <span class="block">Mindspace, Hitech City Road,</span>
+        <span class="block">Phase 2, beside TCS Gate C,</span>
+        <span class="block">towards Gachibowli,</span>
+        <span class="block">Hyderabad, Telangana 500081</span>
+      </address>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="https://www.google.com/maps/search/?api=1&query=Raidurg%20Metro%20Station%2C%20Mindspace%2C%20Hitech%20City%20Road%2C%20Phase%202%2C%20Hyderabad%2C%20Telangana%20500081" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium uppercase tracking-wider text-forest-dark shadow-gold transition-transform hover:scale-105">📍 Open Google Maps</a>
+        <a href="tel:+910000000000" class="flex items-center gap-2 rounded-full border border-gold/40 px-6 py-3 text-sm font-medium uppercase tracking-wider text-gold transition-colors hover:bg-gold/10">📞 Call Now</a>
+        <a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 rounded-full border border-gold/40 px-6 py-3 text-sm font-medium uppercase tracking-wider text-gold transition-colors hover:bg-gold/10">💬 WhatsApp</a>
+      </div>
+      <p class="mt-4 text-xs text-cream/40">Update the phone number above with O'KLOK's real contact details.</p>
+    </div>
+    <div class="reveal-right overflow-hidden rounded-3xl border border-gold/25 shadow-gold">
+      <iframe title="O'KLOK location map" src="https://www.google.com/maps?q=Raidurg%20Metro%20Station%2C%20Mindspace%2C%20Hitech%20City%20Road%2C%20Phase%202%2C%20Hyderabad%2C%20Telangana%20500081&output=embed" width="100%" height="420" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="filter:grayscale(15%)"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="relative bg-forest py-28">
+  <div class="grain-overlay"></div>
+  <div class="relative mx-auto max-w-3xl px-6 text-center">
+    <span class="font-script text-2xl text-gold-soft">In their words</span>
+    <h2 class="mt-1 mb-14 font-display text-4xl text-cream sm:text-5xl">Loved by Regulars</h2>
+    <div id="testimonialBox" class="relative">
+      <div id="testimonialSlide" class="testimonial-slide rounded-3xl border border-gold/20 bg-cream/[0.06] p-10 backdrop-blur-md"></div>
+      <div id="testimonialDots" class="mt-8 flex justify-center gap-2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WATERBOTTLE ============ -->
+<section id="water" class="relative overflow-hidden bg-forest-dark py-24 border-t border-gold/10">
+  <div class="grain-overlay"></div>
+  <div class="relative mx-auto max-w-5xl px-6 flex flex-col md:flex-row items-center justify-center gap-12 sm:gap-20">
+    <div class="w-full md:w-1/2 flex justify-center reveal-left">
+      <img src="waterbottle.png" alt="O'KLOK Pure Excellence Water Bottle" class="max-h-[450px] w-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] hover:scale-[1.03] transition-transform duration-700 ease-out" />
+    </div>
+    <div class="w-full md:w-1/2 text-center md:text-left reveal-right">
+      <span class="font-script text-3xl text-gold-soft">Stay Hydrated</span>
+      <h2 class="mt-2 font-display text-4xl text-cream sm:text-5xl leading-tight">Pure Excellence</h2>
+      <div class="mt-6 w-12 h-1 bg-gold mx-auto md:mx-0"></div>
+      <p class="mt-6 text-cream/80 text-lg leading-relaxed max-w-md mx-auto md:mx-0">
+        Refresh yourself on the go with our premium branded Oceana water. Perfectly pure, crisp, and refreshing—the ideal companion to your perfect cup of coffee.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+        <span class="inline-block rounded-full border border-gold/40 bg-gold/5 px-8 py-3 text-gold font-display text-xl tracking-wide shadow-gold">₹30</span>
+        <span class="text-sm text-cream/50 uppercase tracking-widest">1000ml Bottle</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="relative border-t border-gold/15 bg-forest-dark pt-16">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="flex flex-col items-center gap-10 text-center sm:flex-row sm:items-start sm:justify-between sm:text-left">
+      <div>
+        <div class="flex items-center justify-center sm:justify-start">
+          <img src="Logo.png" alt="O'KLOK Logo" class="h-16 w-auto drop-shadow-md" />
+        </div>
+        <p class="mt-2 font-script text-lg text-gold-soft">Refresh Yourself</p>
+      </div>
+      <nav class="flex flex-col gap-2 sm:flex-row sm:gap-8">
+        <a href="#hero" class="text-sm uppercase tracking-wider text-cream/70 hover:text-gold">Home</a>
+        <a href="#story" class="text-sm uppercase tracking-wider text-cream/70 hover:text-gold">Our Story</a>
+        <a href="#menu" class="text-sm uppercase tracking-wider text-cream/70 hover:text-gold">Menu</a>
+        <a href="#gallery" class="text-sm uppercase tracking-wider text-cream/70 hover:text-gold">Gallery</a>
+        <a href="#visit" class="text-sm uppercase tracking-wider text-cream/70 hover:text-gold">Visit Us</a>
+      </nav>
+      <div class="flex gap-4">
+        <a href="#" aria-label="O'KLOK on Instagram" class="rounded-full border border-gold/25 p-2.5 text-cream/80 hover:border-gold hover:text-gold">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        </a>
+        <a href="#" aria-label="O'KLOK on Facebook" class="rounded-full border border-gold/25 p-2.5 text-cream/80 hover:border-gold hover:text-gold">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://wa.me/910000000000" aria-label="Message O'KLOK on WhatsApp" class="rounded-full border border-gold/25 p-2.5 text-cream/80 hover:border-gold hover:text-gold">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 1 1-3.8-7.1"/><path d="M21 11.5 12 12l1-3"/><circle cx="12" cy="11.5" r="8.5" fill="none"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="divider-gold mt-12"></div>
+    <p class="py-6 text-center text-xs text-cream/40">© 2026 O'KLOK. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+/* ---------- DATA ---------- */
+
+
+
+
+const menuData = [
+  { id:"coffee", label:"Coffee", icon:"☕", items:[["Filter Coffee",40],["Black Coffee",25],["Instant Coffee",30]] },
+  { id:"tea", label:"Tea", icon:"🍵", items:[["Tea",30],["Ginger Tea",35],["Masala Tea",30],["Green Tea",30],["Lemon Tea",30],["Black Tea",25],["Elaichi Tea",35],["Herbal Tea",30],["Jaggery Tea",30]] },
+  { id:"milk", label:"Milk", icon:"🥛", items:[["Boost",40],["Horlicks",40],["Bournvita",40],["Badam Milk",40]] },
+  { id:"bakery", label:"Bakery & Puffs", icon:"🥐", items:[["Aloo Samosa",25],["Corn Samosa (4 pcs)",35],["Onion Samosa (4 pcs)",35],["Veg Puff",25],["Egg Puff",30],["Chicken Puff",40],["Paneer Puff",35],["Bun Maska",30],["Dilkhush",30],["Veg Burger",60],["Chicken Puff Roll",70],["Paneer Spring Roll",60],["Chicken Samosa",35],["Guntur Chicken Burger",70],["Guntur Chicken Hotdog",70],["Paneer Cheese Roll",65],["Choco Lava",60],["Brownie Cookie",60],["Brownie Box",60]] },
+  { id:"rolls", label:"Rolls & Wraps", icon:"🌯", items:[["Egg Roll",70],["Veg Roll",60],["Paneer Roll",90],["Cheese Roll",90],["Paneer Cheese Roll",110],["Chicken Roll",120]] },
+  { id:"sandwiches", label:"Sandwiches", icon:"🥪", items:[["Veg Sandwich",50],["Egg Sandwich",70],["Cheese Sandwich",70],["Chicken Sandwich",80]] },
+  { id:"fries", label:"French Fries", icon:"🍟", items:[["French Fries",80],["Peri Peri French Fries",100]] },
+  { id:"juice", label:"Juice", icon:"🥤", items:[["Lime Soda Salt",40],["Sweet Lime",40],["Masala Lime",40],["Pineapple Juice",70],["Watermelon Juice",80],["Lime Juice",40],["Orange Juice",60],["Mango Juice",70],["Papaya Juice",70],["Sapota Juice",70],["Apple Juice",70],["Banana Juice",70],["Mosambi Juice",80]] },
+  { id:"crushers", label:"Crushers", icon:"🍧", items:[["Mango Crusher",60],["Pineapple Crusher",60],["Kiwi Crusher",60],["Kala Khatta Crusher",60]] },
+  { id:"desserts", label:"Desserts", icon:"🍰", items:[["Mulberry Delight",140],["Mango Delight",140]] },
+  { id:"shakes", label:"Milk Shakes", icon:"🥤", items:[["Mango Shake",80],["Papaya Shake",80],["Sapota Shake",80],["Apple Shake",100],["Avocado Shake",120],["Banana Shake",70],["Strawberry Shake",110],["Kiwi Shake",110],["Dragon Fruit Shake",100],["Oreo Shake",80],["Musk Melon Shake",90]] },
+  { id:"maggi", label:"Maggi", icon:"🍜", items:[["Plain Maggi",50],["Veg Maggi",60],["Cheese Maggi",90],["Egg Maggi",70],["Chicken Maggi",90],["Paneer Maggi",90],["Cheese Chicken Maggi",110]] },
+  { id:"breakfast", label:"Healthy Breakfast", icon:"🍳", items:[["Canadian Breakfast",100],["Bread Omelette",70],["Double Egg Omelette",50],["Fruit Bowl",120]] },
+  { id:"specials", label:"O'KLOK Specials", icon:"⭐", items:[["Kadapa Pannurli",60],["Mazza Cocktail",50],["Mango With Coffee",60],["Pineapple With Coffee",60]] },
+];
+
+const galleryImages = [
+  { seed:"oklok-1", h:420, alt:"Filter coffee being poured at O'KLOK" },
+  { seed:"oklok-2", h:300, alt:"Cozy interior seating at O'KLOK" },
+  { seed:"oklok-3", h:380, alt:"Fresh chai being brewed" },
+  { seed:"oklok-4", h:260, alt:"Coffee beans roasting" },
+  { seed:"oklok-5", h:340, alt:"Bun maska and chai on a wooden table" },
+  { seed:"oklok-6", h:300, alt:"Guests chatting over coffee" },
+  { seed:"oklok-7", h:420, alt:"Gold signage at O'KLOK entrance" },
+  { seed:"oklok-8", h:280, alt:"Iced coffee shake with whipped cream" },
+];
+
+const testimonials = [
+  { name:"Ananya Rao", role:"Regular, Hitech City", quote:"My filter coffee stop before every shift. Consistent, warm, and the staff remember my order.", rating:5 },
+  { name:"Karthik Reddy", role:"Software Engineer", quote:"Walked in for a quick chai, stayed for the Guntur chicken burger. Now it's a weekly habit.", rating:5 },
+  { name:"Sneha Iyer", role:"Marketing Lead", quote:"The masala tea here tastes like home. Quiet corner tables make it perfect for calls between meetings.", rating:4 },
+  { name:"Mohammed Faizan", role:"Student", quote:"Best value menu near Raidurg metro. The chicken maggi after late classes is unbeatable.", rating:5 },
+  { name:"Priya Deshmukh", role:"Designer", quote:"Loved the vintage interiors as much as the coffee. The badam milk is criminally good.", rating:5 },
+  { name:"Rahul Varma", role:"Founder, early-stage startup", quote:"We've taken half our investor calls from the corner table here. Great wifi, better coffee.", rating:4 },
+];
+
+/* ---------- NAVBAR ---------- */
+const navbar = document.getElementById("navbar");
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 40) {
+    navbar.classList.add("bg-forest-dark/90","backdrop-blur-md","border-b","border-gold/20","py-3");
+    navbar.classList.remove("py-6");
+  } else {
+    navbar.classList.remove("bg-forest-dark/90","backdrop-blur-md","border-b","border-gold/20","py-3");
+    navbar.classList.add("py-6");
+  }
+});
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+const iconMenu = document.getElementById("iconMenu");
+const iconClose = document.getElementById("iconClose");
+menuToggle.addEventListener("click", () => {
+  mobileMenu.classList.toggle("hidden");
+  iconMenu.classList.toggle("hidden");
+  iconClose.classList.toggle("hidden");
+});
+mobileMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
+  mobileMenu.classList.add("hidden"); iconMenu.classList.remove("hidden"); iconClose.classList.add("hidden");
+}));
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+
+/* generic reveal-on-scroll for .reveal / .reveal-left / .reveal-right */
+document.querySelectorAll(".reveal, .reveal-left, .reveal-right").forEach((el)=>{
+  ScrollTrigger.create({
+    trigger: el, start: "top 85%",
+    onEnter: () => el.classList.add("in-view"),
+  });
+});
+
+/* ---------- OUR STORY: timeline logic removed ---------- */
+
+/* ---------- MENU ---------- */
+const menuGridEl = document.getElementById("menuGrid");
+
+function renderMenuGrid(query = "") {
+  const q = query.trim().toLowerCase();
+  let html = "";
+  let hasResults = false;
+
+  menuData.forEach((cat) => {
+    // Filter items in this category
+    const filteredItems = cat.items.filter(([name, price]) => {
+      return name.toLowerCase().includes(q);
+    });
+
+    if (filteredItems.length > 0) {
+      hasResults = true;
+      html += `
+        <div class="break-inside-avoid mb-8 sm:mb-12 rounded-3xl border border-gold/15 bg-forest-dark/40 p-6 sm:p-8 shadow-gold transition-transform hover:scale-[1.01]">
+          <h3 class="mb-6 flex items-center gap-3 font-display text-2xl text-gold">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-xl shadow-inner">${cat.icon}</span>
+            ${cat.label}
+          </h3>
+          <ul class="flex flex-col gap-4">
+            ${filteredItems.map(([name, price]) => `
+              <li class="flex items-baseline justify-between gap-3 group cursor-default">
+                <span class="text-sm sm:text-base text-cream/90 group-hover:text-gold transition-colors leading-tight">${name}</span>
+                <div class="flex-1 border-b-2 border-dotted border-cream/20 opacity-50 relative top-[-5px]"></div>
+                <span class="flex-shrink-0 font-display text-base text-gold whitespace-nowrap tracking-wide">₹${price}</span>
+              </li>
+            `).join("")}
+          </ul>
+        </div>
+      `;
+    }
+  });
+
+  if (!hasResults) {
+    html = `<div class="col-span-full py-16 text-center text-cream/60"><span class="text-4xl mb-4 block">☕</span><p class="text-lg">No dishes match "${query}". Try a different word.</p></div>`;
+  }
+
+  menuGridEl.innerHTML = html;
+}
+
+document.getElementById("menuSearch").addEventListener("input", (e) => renderMenuGrid(e.target.value));
+renderMenuGrid();
+
+/* ---------- GALLERY ---------- */
+const galleryGridEl = document.getElementById("galleryGrid");
+galleryImages.forEach((img,i)=>{
+  const card = document.createElement("div");
+  card.className = "gallery-card reveal group relative overflow-hidden rounded-2xl border border-transparent";
+  card.style.height = img.h+"px";
+  card.style.transitionDelay = ((i%3)*0.1)+"s";
+  card.innerHTML = `
+    <img src="https://picsum.photos/seed/${img.seed}/600/${img.h}" alt="${img.alt}" loading="lazy" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="gallery-overlay absolute inset-0"></div>
+    <span class="gallery-caption absolute bottom-3 left-3 text-xs uppercase tracking-wider text-cream">${img.alt}</span>
+  `;
+  galleryGridEl.appendChild(card);
+});
+document.querySelectorAll("#galleryGrid .reveal").forEach((el)=>{
+  ScrollTrigger.create({ trigger: el, start: "top 90%", onEnter: () => el.classList.add("in-view") });
+});
+
+/* ---------- VISIT US: floating beans ---------- */
+const visitBeansEl = document.getElementById("visitBeans");
+for (let i=0;i<6;i++){
+  const span = document.createElement("span");
+  span.className = "pointer-events-none absolute h-3 w-2 rounded-full bg-gold/25 animate-float";
+  span.style.top = (10+((i*17)%80))+"%";
+  if (i%2===0) span.style.left = (4+i*3)+"%"; else span.style.right = (4+i*3)+"%";
+  span.style.animationDelay = (i*0.6)+"s";
+  visitBeansEl.appendChild(span);
+}
+
+/* ---------- TESTIMONIALS: auto-sliding carousel ---------- */
+let tIndex = 0;
+let tPaused = false;
+const slideEl = document.getElementById("testimonialSlide");
+const dotsEl = document.getElementById("testimonialDots");
+
+function starsHTML(rating){
+  let out = "";
+  for (let i=0;i<5;i++){
+    out += i < rating
+      ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="#D4AF37" stroke="#D4AF37"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>`
+      : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(212,175,55,0.2)"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>`;
+  }
+  return out;
+}
+
+function renderTestimonial() {
+  const t = testimonials[tIndex];
+  slideEl.style.opacity = 0;
+  slideEl.style.transform = "scale(0.92)";
+  setTimeout(()=>{
+    slideEl.innerHTML = `
+      <svg class="mx-auto mb-4 h-8 w-8 text-gold/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M7 7h4v6a4 4 0 0 1-4 4"/><path d="M15 7h4v6a4 4 0 0 1-4 4"/></svg>
+      <p class="font-display text-xl italic leading-relaxed text-cream sm:text-2xl">&ldquo;${t.quote}&rdquo;</p>
+      <div class="mt-6 flex justify-center gap-1">${starsHTML(t.rating)}</div>
+      <p class="mt-5 font-display text-base text-gold">${t.name}</p>
+      <p class="text-sm text-cream/50">${t.role}</p>
+    `;
+    slideEl.style.opacity = 1;
+    slideEl.style.transform = "scale(1)";
+  }, 220);
+
+  dotsEl.innerHTML = testimonials.map((_,i)=>`
+    <button aria-label="Show testimonial ${i+1}" data-i="${i}" class="h-2 rounded-full transition-all ${i===tIndex ? "w-6 bg-gold" : "w-2 bg-cream/25"}"></button>
+  `).join("");
+  dotsEl.querySelectorAll("button").forEach((btn)=> btn.addEventListener("click", ()=>{ tIndex = +btn.dataset.i; renderTestimonial(); }));
+}
+renderTestimonial();
+document.getElementById("testimonialBox").addEventListener("mouseenter", ()=> tPaused = true);
+document.getElementById("testimonialBox").addEventListener("mouseleave", ()=> tPaused = false);
+setInterval(()=>{ if(!tPaused){ tIndex = (tIndex+1) % testimonials.length; renderTestimonial(); } }, 5000);
+
+/* ---------- TYPEWRITER ANIMATION ---------- */
+const phrases = [
+  "Fresh Filter Coffee ☕",
+  "Black Coffee",
+  "Masala Tea",
+  "Milk Shakes",
+  "Rolls & Wraps",
+  "Sandwiches",
+  "French Fries",
+  "Maggi",
+  "Healthy Breakfast",
+  "Desserts",
+  "Fresh Juices",
+  "O'KLOK Specials",
+  "Community & Conversations",
+  "One Cup at a Time"
+];
+
+const twEl = document.getElementById("typewriter");
+let currentPhraseIdx = 0;
+let currentCharIdx = 0;
+let isDeleting = false;
+let twTimeout;
+
+function typeWriter() {
+  if (!twEl) return;
+  const currentPhrase = phrases[currentPhraseIdx];
+  
+  if (isDeleting) {
+    twEl.textContent = currentPhrase.substring(0, currentCharIdx - 1);
+    currentCharIdx--;
+  } else {
+    twEl.textContent = currentPhrase.substring(0, currentCharIdx + 1);
+    currentCharIdx++;
+  }
+
+  let typingSpeed = 60;
+  if (isDeleting) typingSpeed = 35;
+
+  if (!isDeleting && currentCharIdx === currentPhrase.length) {
+    typingSpeed = 1500; // Pause at end of phrase
+    isDeleting = true;
+  } else if (isDeleting && currentCharIdx === 0) {
+    isDeleting = false;
+    currentPhraseIdx = (currentPhraseIdx + 1) % phrases.length;
+    typingSpeed = 500; // Pause before typing new phrase
+  }
+
+  twTimeout = setTimeout(typeWriter, typingSpeed);
+}
+typeWriter();
+
+/* refresh ScrollTrigger after all dynamic content is in the DOM */
+ScrollTrigger.refresh();
+</script>
+</body>
+</html>
