@@ -145,7 +145,6 @@
       <a href="#hero" class="nav-link text-sm uppercase tracking-[0.15em] text-cream/80 hover:text-gold">Home</a>
       <a href="#story" class="nav-link text-sm uppercase tracking-[0.15em] text-cream/80 hover:text-gold">Our Story</a>
       <a href="#menu" class="nav-link text-sm uppercase tracking-[0.15em] text-cream/80 hover:text-gold">Menu</a>
-      <a href="#gallery" class="nav-link text-sm uppercase tracking-[0.15em] text-cream/80 hover:text-gold">Gallery</a>
       <a href="#visit" class="nav-link text-sm uppercase tracking-[0.15em] text-cream/80 hover:text-gold">Visit Us</a>
     </nav>
     <a href="#visit" class="hidden rounded-full border border-gold px-5 py-2 text-sm uppercase tracking-wider text-gold transition-colors hover:bg-gold hover:text-forest-dark lg:block">Visit Us</a>
@@ -159,7 +158,6 @@
       <a href="#hero" class="py-3 text-sm uppercase tracking-[0.15em] text-cream/85 border-b border-cream/10">Home</a>
       <a href="#story" class="py-3 text-sm uppercase tracking-[0.15em] text-cream/85 border-b border-cream/10">Our Story</a>
       <a href="#menu" class="py-3 text-sm uppercase tracking-[0.15em] text-cream/85 border-b border-cream/10">Menu</a>
-      <a href="#gallery" class="py-3 text-sm uppercase tracking-[0.15em] text-cream/85 border-b border-cream/10">Gallery</a>
       <a href="#visit" class="py-3 text-sm uppercase tracking-[0.15em] text-cream/85">Visit Us</a>
     </div>
   </nav>
@@ -297,16 +295,7 @@
 </section>
 
 <!-- ============ GALLERY ============ -->
-<section id="gallery" class="relative bg-forest py-28">
-  <div class="grain-overlay"></div>
-  <div class="relative mx-auto max-w-6xl px-6">
-    <div class="mb-14 text-center">
-      <span class="font-script text-2xl text-gold-soft">Inside O'KLOK</span>
-      <h2 class="mt-1 font-display text-4xl text-cream sm:text-5xl">Gallery</h2>
-    </div>
-    <div id="galleryGrid" class="columns-1 gap-4 sm:columns-2 lg:columns-3 [&>*]:mb-4"></div>
-  </div>
-</section>
+
 
 
 
@@ -375,7 +364,6 @@
           <a href="#hero" class="text-sm uppercase tracking-wider text-cream/80 hover:text-gold transition-colors">Home</a>
           <a href="#story" class="text-sm uppercase tracking-wider text-cream/80 hover:text-gold transition-colors">Our Story</a>
           <a href="#menu" class="text-sm uppercase tracking-wider text-cream/80 hover:text-gold transition-colors">Menu</a>
-          <a href="#gallery" class="text-sm uppercase tracking-wider text-cream/80 hover:text-gold transition-colors">Gallery</a>
         </nav>
       </div>
 
@@ -435,16 +423,7 @@ const menuData = [
   { id:"specials", label:"O'KLOK Specials", icon:"⭐", items:[["Kadapa Pannurli",60],["Mazza Cocktail",50],["Mango With Coffee",60],["Pineapple With Coffee",60]] },
 ];
 
-const galleryImages = [
-  { seed:"oklok-1", h:420, alt:"Filter coffee being poured at O'KLOK" },
-  { seed:"oklok-2", h:300, alt:"Cozy interior seating at O'KLOK" },
-  { seed:"oklok-3", h:380, alt:"Fresh chai being brewed" },
-  { seed:"oklok-4", h:260, alt:"Coffee beans roasting" },
-  { seed:"oklok-5", h:340, alt:"Bun maska and chai on a wooden table" },
-  { seed:"oklok-6", h:300, alt:"Guests chatting over coffee" },
-  { seed:"oklok-7", h:420, alt:"Gold signage at O'KLOK entrance" },
-  { seed:"oklok-8", h:280, alt:"Iced coffee shake with whipped cream" },
-];
+
 
 const testimonials = [
   { name:"Ananya Rao", role:"Regular, Hitech City", quote:"My filter coffee stop before every shift. Consistent, warm, and the staff remember my order.", rating:5 },
@@ -539,23 +518,7 @@ function renderMenuGrid(query = "") {
 document.getElementById("menuSearch").addEventListener("input", (e) => renderMenuGrid(e.target.value));
 renderMenuGrid();
 
-/* ---------- GALLERY ---------- */
-const galleryGridEl = document.getElementById("galleryGrid");
-galleryImages.forEach((img,i)=>{
-  const card = document.createElement("div");
-  card.className = "gallery-card reveal group relative overflow-hidden rounded-2xl border border-transparent";
-  card.style.height = img.h+"px";
-  card.style.transitionDelay = ((i%3)*0.1)+"s";
-  card.innerHTML = `
-    <img src="https://picsum.photos/seed/${img.seed}/600/${img.h}" alt="${img.alt}" loading="lazy" class="absolute inset-0 h-full w-full object-cover" />
-    <div class="gallery-overlay absolute inset-0"></div>
-    <span class="gallery-caption absolute bottom-3 left-3 text-xs uppercase tracking-wider text-cream">${img.alt}</span>
-  `;
-  galleryGridEl.appendChild(card);
-});
-document.querySelectorAll("#galleryGrid .reveal").forEach((el)=>{
-  ScrollTrigger.create({ trigger: el, start: "top 90%", onEnter: () => el.classList.add("in-view") });
-});
+
 
 /* ---------- VISIT US: floating beans ---------- */
 const visitBeansEl = document.getElementById("visitBeans");
