@@ -1,666 +1,166 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>O'KLOK — Refresh Yourself | Coffee, Tea & All-Day Cafe in Hyderabad</title>
-<meta name="description" content="O'KLOK is Hyderabad's everyday coffee destination near Raidurg Metro, Hitech City — fresh filter coffee, chai, rolls, sandwiches, juices and shakes. Refresh Yourself." />
-<meta property="og:title" content="O'KLOK — Refresh Yourself" />
-<meta property="og:description" content="Your everyday coffee destination for fresh brews, snacks, and conversations." />
-<meta property="og:type" content="website" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;0,900;1,500&family=Work+Sans:wght@300;400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
-
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          ink: "#07211A",
-          forest: { DEFAULT: "#0E3B2E", light: "#1B5544", dark: "#082420" },
-          gold: { DEFAULT: "#D4AF37", soft: "#E8CD7A", deep: "#A9821F" },
-          cream: { DEFAULT: "#F5EEDC", dim: "#CBC0A0" },
-        },
-        fontFamily: {
-          display: ["Fraunces", "serif"],
-          body: ["Work Sans", "sans-serif"],
-          script: ["Caveat", "cursive"],
-        },
-        keyframes: {
-          steam: {
-            "0%": { transform: "translateY(0) scaleX(1)", opacity: "0" },
-            "15%": { opacity: "0.5" },
-            "100%": { transform: "translateY(-60px) scaleX(1.4)", opacity: "0" },
-          },
-          float: {
-            "0%,100%": { transform: "translateY(0px) rotate(0deg)" },
-            "50%": { transform: "translateY(-14px) rotate(6deg)" },
-          },
-          fadeUp: {
-            "0%": { opacity: "0", transform: "translateY(28px)" },
-            "100%": { opacity: "1", transform: "translateY(0)" },
-          },
-          blink: {
-            "0%, 100%": { opacity: 1 },
-            "50%": { opacity: 0 },
-          },
-          ray: {
-            "0%, 100%": { opacity: 0.1, transform: "rotate(35deg) scaleY(1)" },
-            "50%": { opacity: 0.2, transform: "rotate(35deg) scaleY(1.2)" },
-          },
-          dust: {
-            "0%": { transform: "translate(0, 0)", opacity: 0 },
-            "50%": { opacity: 0.6 },
-            "100%": { transform: "translate(20px, -40px)", opacity: 0 },
-          }
-        },
-        animation: {
-          steam: "steam 3.5s ease-in-out infinite",
-          float: "float 6s ease-in-out infinite",
-          fadeUp: "fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) forwards",
-          blink: "blink 1s step-end infinite",
-          ray: "ray 8s ease-in-out infinite",
-          dust: "dust 10s ease-in-out infinite",
-        },
-      },
-    },
-  };
-</script>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O'KLOK CAFE – Coffee & Co. | Raidurg Metro, Hitech City</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  html { scroll-behavior: smooth; }
-  body { background:#0E3B2E; color:#F5EEDC; overflow-x:hidden; }
-  h1,h2,h3,h4,.font-display { font-family:"Fraunces",serif; }
-
-  ::-webkit-scrollbar { width:10px; }
-  ::-webkit-scrollbar-track { background:#082420; }
-  ::-webkit-scrollbar-thumb { background:#A9821F; border-radius:999px; }
-
-  a:focus-visible, button:focus-visible, input:focus-visible {
-    outline:2px solid #D4AF37; outline-offset:3px; border-radius:4px;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration:.001ms !important;
-      transition-duration:.001ms !important;
-      scroll-behavior:auto !important;
-    }
-  }
-
-  .grain-overlay {
-    position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  }
-  .divider-gold { height:1px; background:linear-gradient(to right, transparent, rgba(212,175,55,.7), transparent); }
-  .text-gradient-gold {
-    background:linear-gradient(110deg,#A9821F 10%,#F3DA8A 45%,#A9821F 80%);
-    background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
-  .bg-radial-fade { background:radial-gradient(circle at 50% 30%, rgba(212,175,55,.12), transparent 60%); }
-  .wax-seal {
-    width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-    background:radial-gradient(circle at 35% 30%, #E8CD7A, #A9821F 70%, #82640F 100%);
-    color:#082420; font-family:"Fraunces",serif; font-weight:600;
-    box-shadow:0 4px 14px rgba(0,0,0,.45), inset 0 0 0 2px rgba(8,36,32,.25);
-  }
-  .shadow-gold { box-shadow:0 0 0 1px rgba(212,175,55,.35), 0 8px 30px rgba(0,0,0,.35); }
-  .reveal { opacity:0; transform:translateY(40px); transition:opacity .7s ease, transform .7s ease; }
-  .reveal.in-view { opacity:1; transform:translateY(0); }
-  .reveal-left { opacity:0; transform:translateX(-60px); transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
-  .reveal-left.in-view { opacity:1; transform:translateX(0); }
-  .reveal-right { opacity:0; transform:translateX(60px); transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
-  .reveal-right.in-view { opacity:1; transform:translateX(0); }
-  .stagger > * { opacity:0; }
-  .gallery-card { transition: border-color .5s, box-shadow .5s; }
-  .gallery-card img { transition: transform .7s ease, filter .7s ease; }
-  .gallery-card:hover img { transform:scale(1.1); filter:blur(1px); }
-  .gallery-card:hover { border-color: rgba(212,175,55,.6); box-shadow:0 0 0 1px rgba(212,175,55,.35), 0 8px 30px rgba(0,0,0,.35); }
-  .gallery-caption { opacity:0; transform:translateY(12px); transition:opacity .4s, transform .4s; }
-  .gallery-card:hover .gallery-caption { opacity:1; transform:translateY(0); }
-  .gallery-overlay { background:rgba(8,36,32,0); transition:background .5s; }
-  .gallery-card:hover .gallery-overlay { background:rgba(8,36,32,.3); }
-  .menu-card { transition: transform .25s, box-shadow .25s; }
-  .menu-card:hover { transform:translateY(-6px); box-shadow:0 18px 40px rgba(0,0,0,.45); }
-  .tab-btn.active { background:#D4AF37; color:#082420; border-color:#D4AF37; }
-  .step-card { transition: transform .4s ease; }
-  .nav-link { position:relative; }
-  .nav-link::after { content:""; position:absolute; left:0; bottom:-4px; height:1px; width:0; background:#D4AF37; transition:width .3s; }
-  .nav-link:hover::after { width:100%; }
-  .snap-x { scroll-snap-type:x mandatory; }
-  .testimonial-slide { transition: opacity .5s ease, transform .5s ease; }
+:root{--bg:#fffaf3;--sand:#f5ecd6;--ink:#2b1a10;--muted:#7a6656;--amber:#f5a30a;--card:#fff;--line:#eadfce;--dark:#2b1a10;--on-dark:#f3e8d8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c120b;--sand:#251811;--ink:#f6ebdc;--muted:#c2ac96;--card:#2b1c13;--line:#3d2b1f;--dark:#120a05}}
+:root[data-theme="dark"]{--bg:#1c120b;--sand:#251811;--ink:#f6ebdc;--muted:#c2ac96;--card:#2b1c13;--line:#3d2b1f;--dark:#120a05}
+html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Poppins,system-ui,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;font-weight:600;font-size:14px;border:0;cursor:pointer}
+.btn.amber{background:var(--amber);color:#2b1a10}
+.btn.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.btn.dark{background:#2b1a10;color:#fff}
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:Fraunces,serif;font-weight:700;letter-spacing:.02em}
+.logo i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--amber);font-style:normal}
+.logo small{display:block;font:500 9px Poppins;letter-spacing:.2em;color:var(--amber)}
+nav ul{display:flex;gap:32px;list-style:none;padding:0;font-size:14px;font-weight:500}
+nav ul a:hover{color:var(--amber)}
+/* hero */
+.hero{position:relative;color:#fff;background:linear-gradient(90deg,rgba(25,14,8,.92),rgba(25,14,8,.55)),url('Cafe Photos/hero.jpg') center/cover;padding:96px 0 88px}
+.badge{display:inline-block;border:1px solid var(--amber);color:var(--amber);border-radius:999px;padding:4px 14px;font-size:11px;font-weight:600;letter-spacing:.08em;margin-bottom:20px}
+.hero h1{font-size:clamp(38px,6vw,60px);max-width:560px}
+.hero h1 em{color:var(--amber)}
+/* typed.js cursor styling */
+.typed-cursor { color: var(--amber); font-weight: 300; }
+.hero p{max-width:520px;margin:20px 0 28px;color:#eadbc8}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.strip{background:#2b1a10;color:#f3e8d8;font-size:12px;font-weight:500}
+.strip .wrap{display:flex;justify-content:space-around;flex-wrap:wrap;gap:12px;padding-top:16px;padding-bottom:16px;text-align:center}
+/* menu */
+section{padding:80px 0}
+.head{text-align:center;margin-bottom:44px}
+.head .eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;color:var(--amber)}
+.head h2{font-size:clamp(30px,4.5vw,42px);margin:8px auto 10px;max-width:420px}
+.head p{color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .2s}
+.card:hover{transform:translateY(-3px)}
+.thumb{height:150px;display:grid;place-items:center;font-size:56px}
+.card div.t{padding:16px 18px 20px}
+.card h3{font-size:17px;margin-bottom:6px}
+.card p{font-size:13px;color:var(--muted)}
+/* story */
+.story{background:var(--sand)}
+.story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.pic{height:340px;border-radius:18px;background:linear-gradient(135deg,#7a4a25,#2b1a10);display:grid;place-items:center;font-size:96px}
+.story .eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;color:var(--amber)}
+.story h2{font-size:clamp(28px,4vw,36px);margin:8px 0 16px}
+.story p{color:var(--muted);font-size:14px;margin-bottom:12px}
+.stats{display:flex;gap:40px;margin-top:24px}
+.stats b{font:700 28px Fraunces,serif;display:block}
+.stats span{font-size:12px;color:var(--muted)}
+/* visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.map{min-height:280px;border-radius:18px;background:var(--sand);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;gap:6px}
+.pin{width:44px;height:44px;border-radius:50%;background:#2b1a10;display:grid;place-items:center;margin-bottom:8px}
+.map b{font-family:Fraunces,serif}
+.map span{font-size:12px;color:var(--muted);max-width:220px}
+.info{background:#2b1a10;color:#f3e8d8;border-radius:18px;padding:32px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.info h3{font-size:20px;color:#fff}
+.info p{font-size:14px}
+/* footer */
+footer{background:#1a0f08;color:#c9b8a4;padding:56px 0 28px;font-size:13px}
+.cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr;gap:32px}
+footer h4{color:#fff;font-size:13px;margin-bottom:12px}
+footer ul{list-style:none;padding:0;display:grid;gap:8px}
+footer a:hover{color:var(--amber)}
+.copy{border-top:1px solid #3a281b;margin-top:36px;padding-top:20px;text-align:center;font-size:12px}
+@media(max-width:820px){
+nav ul{display:none}
+.grid{grid-template-columns:repeat(2,1fr)}
+.story .wrap,.visit{grid-template-columns:1fr}
+.cols{grid-template-columns:1fr 1fr}
+section{padding:56px 0}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.stats{gap:24px}}
 </style>
 </head>
+<body>
+<header><div class="wrap"><nav>
+<a class="logo" href="#home"><i>☕</i><span>O'KLOK CAFE<small>COFFEE &amp; CO.</small></span></a>
+<ul><li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#about">About</a></li><li><a href="#location">Location</a></li><li><a href="#contact">Contact</a></li></ul>
+<a class="btn dark" href="tel:+919876543210">Order Now</a>
+</nav></div></header>
 
-<body class="font-body antialiased selection:bg-gold selection:text-forest-dark">
+<main id="home">
+<div class="hero"><div class="wrap">
+<span class="badge">HITECH CITY'S FAVOURITE STOP</span>
+<h1>Sip the Moment,<br>Savor the Vibe,<br><span class="auto-type" style="color:var(--amber); font-style:italic;"></span></h1>
+<p>From bold espresso to fresh juices, crispy fries to cheesy maggi — everything you crave, brewed and served with love right beside Raidurg Metro Station.</p>
+<div class="cta"><a class="btn amber" href="#menu">View Menu ☕</a><a class="btn ghost" href="#location">Get Directions 📍</a></div>
+</div></div>
+<div class="strip"><div class="wrap"><span>☕ Freshly Brewed</span><span>🕗 Open 24x7</span><span>🚇 Next to Raidurg Metro</span><span>🍽 10+ Menu Categories</span></div></div>
 
-<!-- ============ NAVBAR ============ -->
-<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-6">
-  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
-    <a href="#hero" class="flex items-center gap-2">
-      <img src="Logo.png" alt="O'KLOK Logo" class="h-12 w-auto drop-shadow-lg transition-transform hover:scale-105" />
-    </a>
-    <nav class="hidden items-center gap-8 lg:flex">
-      <a href="#hero" class="nav-link text-sm uppercase tracking-[0.15em] text-cream/80 hover:text-gold">Home</a>
-      <a href="#story" class="nav-link text-sm uppercase tracking-[0.15em] text-cream/80 hover:text-gold">Our Story</a>
-      <a href="#menu" class="nav-link text-sm uppercase tracking-[0.15em] text-cream/80 hover:text-gold">Menu</a>
-      <a href="#visit" class="nav-link text-sm uppercase tracking-[0.15em] text-cream/80 hover:text-gold">Visit Us</a>
-    </nav>
-    <a href="#visit" class="hidden rounded-full border border-gold px-5 py-2 text-sm uppercase tracking-wider text-gold transition-colors hover:bg-gold hover:text-forest-dark lg:block">Visit Us</a>
-    <button id="menuToggle" aria-label="Toggle menu" class="text-cream lg:hidden">
-      <svg id="iconMenu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      <svg id="iconClose" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </div>
-  <nav id="mobileMenu" class="hidden overflow-hidden bg-forest-dark/95 backdrop-blur-md lg:hidden">
-    <div class="flex flex-col gap-1 px-6 py-4">
-      <a href="#hero" class="py-3 text-sm uppercase tracking-[0.15em] text-cream/85 border-b border-cream/10">Home</a>
-      <a href="#story" class="py-3 text-sm uppercase tracking-[0.15em] text-cream/85 border-b border-cream/10">Our Story</a>
-      <a href="#menu" class="py-3 text-sm uppercase tracking-[0.15em] text-cream/85 border-b border-cream/10">Menu</a>
-      <a href="#visit" class="py-3 text-sm uppercase tracking-[0.15em] text-cream/85">Visit Us</a>
-    </div>
-  </nav>
-</header>
+<section id="menu"><div class="wrap">
+<div class="head"><div class="eyebrow">OUR MENU</div><h2>Something for Every Craving</h2><p>From your morning brew to a midnight snack — explore all our categories.</p></div>
+<div class="grid">
+<div class="card"><div class="thumb" style="background:url('Cafe Photos/coffee.jpg') center/cover"></div><div class="t"><h3>Coffee</h3><p>Espresso, cappuccino, latte &amp; cold brews crafted fresh daily.</p></div></div>
+<div class="card"><div class="thumb" style="background:url('Cafe Photos/tea.jpg') center/cover"></div><div class="t"><h3>Tea</h3><p>Classic chai, green tea and masala tea to warm you up.</p></div></div>
+<div class="card"><div class="thumb" style="background:url('Cafe Photos/milk.jpg') center/cover"></div><div class="t"><h3>Milk</h3><p>Chilled plain, badam and flavoured milk options.</p></div></div>
+<div class="card"><div class="thumb" style="background:url('Cafe Photos/juice.jpg') center/cover"></div><div class="t"><h3>Juice</h3><p>Freshly squeezed seasonal fruit juices, no sugar added.</p></div></div>
+<div class="card"><div class="thumb" style="background:url('Cafe Photos/sandwich.jpg') center/cover"></div><div class="t"><h3>Sandwich</h3><p>Grilled veg, cheese and paneer sandwiches, made to order.</p></div></div>
+<div class="card"><div class="thumb" style="background:url('Cafe Photos/fries.jpg') center/cover"></div><div class="t"><h3>French Fries</h3><p>Crispy golden fries with peri-peri and cheesy seasoning.</p></div></div>
+<div class="card"><div class="thumb" style="background:url('Cafe Photos/rolls.jpg') center/cover"></div><div class="t"><h3>Rolls &amp; Wraps</h3><p>Loaded veg and paneer rolls wrapped fresh in-house.</p></div></div>
+<div class="card"><div class="thumb" style="background:url('Cafe Photos/maggi.jpg') center/cover"></div><div class="t"><h3>Maggi</h3><p>Everyone's favourite masala maggi, loaded with veggies.</p></div></div>
+<div class="card"><div class="thumb" style="background:url('Cafe Photos/milkshake.jpg') center/cover"></div><div class="t"><h3>Milkshake</h3><p>Thick chocolate, oreo and strawberry milkshakes.</p></div></div>
+<div class="card"><div class="thumb" style="background:url('Cafe Photos/desserts.jpg') center/cover"></div><div class="t"><h3>Desserts</h3><p>Brownies, pastries and cakes to end your meal sweetly.</p></div></div>
+</div></div></section>
 
-<!-- ============ HERO ============ -->
-<section id="hero" class="relative h-screen w-full overflow-hidden bg-forest-dark">
-  <video autoplay loop muted playsinline class="absolute inset-0 h-full w-full object-cover z-0">
-    <source src="video%20(12).mp4" type="video/mp4" />
-  </video>
-  <div class="absolute inset-0 bg-gradient-to-b from-forest-dark/60 via-forest-dark/75 to-forest-dark z-0"></div>
-  <div class="grain-overlay z-0"></div>
-  <div class="absolute inset-0 bg-radial-fade z-0"></div>
+<section class="story" id="about"><div class="wrap">
+<div class="pic" style="background:url('Cafe Photos/Front%20Photo.jpg') center/cover" role="img" aria-label="Cozy cafe interior"></div>
+<div>
+<div class="eyebrow">OUR STORY</div>
+<h2>A Cozy Corner Near Raidurg Metro</h2>
+<p>O'KLOK CAFE started with one idea — a place where every hour feels like the right hour for a great cup of coffee. Tucked right beside the Raidurg Metro Station in Mindspace, we're the perfect pit stop for commuters, students and the Hitech City crowd.</p>
+<p>Whether it's a quick chai between meetings or a leisurely milkshake with friends, our menu is built to fit every mood, any o'klok.</p>
+<div class="stats"><div><b>10+</b><span>Menu Categories</span></div><div><b>24x7</b><span>Open Everyday</span></div><div><b>1min</b><span>From Metro Station</span></div></div>
+</div></div></section>
 
-  <!-- Floating Ambient Elements -->
-  <div class="absolute inset-0 z-10 overflow-hidden pointer-events-none">
-    <!-- Light Rays -->
-    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[120%] bg-gradient-to-r from-transparent via-gold/10 to-transparent blur-3xl animate-ray origin-top-left"></div>
-    <div class="absolute top-[20%] right-[10%] w-[30%] h-[100%] bg-gradient-to-r from-transparent via-gold/5 to-transparent blur-3xl animate-ray origin-top-right" style="animation-delay: -4s"></div>
-    
-    <!-- Floating Beans -->
-    <div class="absolute top-[20%] left-[80%] text-2xl opacity-40 animate-float" style="animation-delay: 0s">☕</div>
-    <div class="absolute top-[60%] left-[85%] text-xl opacity-30 animate-float" style="animation-delay: 1.5s">🌿</div>
-    <div class="absolute top-[30%] left-[10%] text-xl opacity-50 animate-float" style="animation-delay: 2.5s">✨</div>
-    <div class="absolute top-[75%] left-[15%] text-3xl opacity-20 animate-float" style="animation-delay: 0.8s">☕</div>
-    
-    <!-- Steam / Dust Particles -->
-    <div class="absolute top-[50%] left-[40%] w-2 h-2 rounded-full bg-cream/20 blur-[1px] animate-dust" style="animation-delay: 0s"></div>
-    <div class="absolute top-[70%] left-[60%] w-1 h-1 rounded-full bg-gold/30 blur-[1px] animate-dust" style="animation-delay: 3s"></div>
-    <div class="absolute top-[30%] left-[70%] w-3 h-3 rounded-full bg-cream/10 blur-[2px] animate-dust" style="animation-delay: 5s"></div>
-    <div class="absolute top-[80%] left-[30%] w-2 h-2 rounded-full bg-gold/20 blur-[1px] animate-dust" style="animation-delay: 7s"></div>
-  </div>
+<section id="location"><div class="wrap">
+<div class="head"><div class="eyebrow">FIND US</div><h2 style="max-width:none">Visit O'KLOK CAFE</h2><p>Right beside the Raidurg Metro Station, easy to spot, easy to reach.</p></div>
+<div class="visit">
+<div class="map"><div class="pin">📍</div><b>O'KLOK CAFE</b><span>Mindspace, Hitech City Road, beside TCS Gate C</span></div>
+<div class="info" id="contact">
+<h3>Address &amp; Timings</h3>
+<p>📍 Raidurg Metro Station, Mindspace, Hitech City Road, Phase 2, beside TCS Gate C, towards Gachibowli, Hyderabad, Telangana 500081</p>
+<p>🕗 Open 24x7, Monday – Sunday</p>
+<p>📞 <a href="tel:+919876543210">+91 98765 43210</a></p>
+<a class="btn amber" href="https://www.google.com/maps/search/?api=1&query=Raidurg+Metro+Station+Hyderabad" target="_blank" rel="noopener">Get Directions</a>
+</div></div></div></section>
+</main>
 
-  <!-- Left-aligned Hero Content -->
-  <div class="relative z-20 flex items-center justify-start max-w-7xl mx-auto h-full px-6 pt-20">
-    <div class="max-w-2xl animate-fadeUp relative">
-
-      <span class="inline-block mb-4 font-script text-xl tracking-wider text-gold-soft relative z-10">☕ Hyderabad's Favorite Coffee Spot</span>
-      
-      <h1 class="font-display text-5xl font-semibold tracking-tight text-cream sm:text-6xl md:text-7xl leading-tight relative z-10">
-        O'KLOK
-        <span class="block text-3xl sm:text-4xl text-gradient-gold mt-2 italic">Refresh Yourself</span>
-      </h1>
-      
-      <p class="mt-6 text-base text-cream/80 sm:text-lg leading-relaxed max-w-lg relative z-10">
-        Fresh brews, comforting bites, and conversations that feel like home.
-      </p>
-
-      <!-- Typing Effect Container -->
-      <div class="mt-8 mb-8 min-h-[4rem] sm:min-h-[3rem] flex flex-wrap items-center relative z-10">
-        <span class="font-display text-2xl sm:text-3xl text-gold" id="typewriter"></span><span class="text-2xl sm:text-3xl text-gold animate-blink">|</span>
-      </div>
-
-      <p class="mb-10 text-sm text-cream/60 sm:text-base leading-relaxed border-l-2 border-gold/30 pl-4 relative z-10">
-        From freshly brewed filter coffee to delicious snacks and refreshing shakes, O'KLOK is where every break becomes a memorable experience.
-      </p>
-
-      <div class="flex flex-col gap-4 sm:flex-row relative z-10">
-        <a href="#menu" class="flex items-center justify-center gap-2 rounded-full bg-gold px-8 py-3 text-sm font-medium uppercase tracking-wider text-forest-dark transition-all hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105">Explore Menu</a>
-        <a href="#visit" class="flex items-center justify-center gap-2 rounded-full border border-gold/50 bg-forest-dark/50 px-8 py-3 text-sm font-medium uppercase tracking-wider text-cream transition-all hover:border-gold hover:text-gold hover:shadow-[0_0_15px_rgba(212,175,55,0.2)]">Visit Us</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/50 animate-bounce z-20">
-    <p class="mb-2 text-xs uppercase tracking-widest text-gold-soft">Scroll down</p>
-    <div class="mx-auto h-9 w-5 rounded-full border border-cream/30 p-1"><span class="block h-1.5 w-1.5 rounded-full bg-gold mx-auto"></span></div>
-  </div>
-</section>
-
-<!-- ============ OUR STORY ============ -->
-<section id="story" class="relative overflow-hidden bg-forest py-28">
-  <svg class="absolute bottom-0 left-0 w-full text-forest-dark/60" viewBox="0 0 1440 200" preserveAspectRatio="none">
-    <path d="M0 200 L160 70 L320 150 L520 40 L760 160 L980 60 L1200 140 L1440 80 L1440 200 Z" fill="currentColor"/>
-  </svg>
-  <div class="grain-overlay"></div>
-  <div class="relative mx-auto max-w-7xl px-6">
-    <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
-      <!-- Video Side -->
-      <div class="reveal-left relative overflow-hidden rounded-3xl border border-gold/20 shadow-[0_0_40px_rgba(212,175,55,0.15)] aspect-video lg:aspect-square">
-        <video autoplay loop muted playsinline class="absolute inset-0 h-full w-full object-cover">
-          <source src="Our%20Story.mp4" type="video/mp4" />
-        </video>
-        <!-- Overlay gradient to ensure text readability -->
-        <div class="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent"></div>
-        <p class="absolute bottom-6 left-6 right-6 font-script text-2xl text-gold-soft leading-relaxed text-center sm:text-3xl">
-          &ldquo;It's not just coffee.<br/>It's our story in every sip.&rdquo;
-        </p>
-      </div>
-
-      <!-- Narrative Side -->
-      <div class="reveal-right flex flex-col justify-center">
-        <span class="mb-4 font-script text-2xl text-gold-soft">Our Story</span>
-        <h2 class="mb-8 font-display text-4xl text-cream sm:text-5xl leading-tight">The Journey of O'KLOK</h2>
-        
-        <div class="space-y-6 text-base text-cream/80 sm:text-lg leading-relaxed">
-          <p>
-            A small idea brewed over endless cups of coffee and late-night conversations. O'KLOK was born to create a space where everyone feels completely at home, escaping the rush of the city.
-          </p>
-          <p>
-            From our humble beginnings as a tiny cafe to a thriving community of coffee lovers, our passion has never wavered. Your love has helped us grow, one cup, one conversation, and one connection at a time.
-          </p>
-          <p>
-            As we look to the future, our promise remains simple: to innovate, to serve, and to evolve. We continue to source the finest beans, craft comforting bites, and bring you better experiences every single day. The journey has just begun.
-          </p>
-        </div>
-
-        <div class="mt-10 flex items-center gap-4">
-          <div class="h-px w-12 bg-gold"></div>
-          <span class="font-display text-sm uppercase tracking-widest text-gold">Since 2024</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FOUNDER ============ -->
-<section id="founder" class="relative overflow-hidden bg-ink py-28 border-t border-gold/10">
-  <div class="grain-overlay"></div>
-  <div class="relative mx-auto max-w-7xl px-6">
-    <div class="flex flex-col md:flex-row items-center gap-16 lg:gap-24">
-      <!-- Image Side -->
-      <div class="w-full md:w-5/12 lg:w-1/3 flex justify-center reveal-left">
-        <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-gold/30 p-2 shadow-[0_0_40px_rgba(212,175,55,0.15)] group">
-          <img src="Founder.png" alt="O'KLOK Founder" class="w-full h-full object-cover rounded-full shadow-inner grayscale group-hover:grayscale-0 transition-all duration-700" />
-          <div class="absolute -bottom-2 -right-2 bg-forest-dark border border-gold/40 text-gold rounded-full w-14 h-14 flex items-center justify-center shadow-lg text-2xl group-hover:scale-110 transition-transform">☕</div>
-        </div>
-      </div>
-      
-      <!-- Text Side -->
-      <div class="w-full md:w-7/12 lg:w-2/3 reveal-right text-center md:text-left">
-        <span class="font-script text-2xl text-gold-soft">The Vision</span>
-        <h2 class="mt-2 font-display text-4xl text-cream sm:text-5xl leading-tight">Meet the Founder</h2>
-        <div class="mt-6 w-12 h-1 bg-gold mx-auto md:mx-0"></div>
-        <div class="mt-8 space-y-6 text-cream/80 text-lg leading-relaxed">
-          <p>
-            Driven by a deep passion for bringing people together over exceptional coffee, our founder built O'KLOK from the ground up to be more than just a cafe—it's a sanctuary in the city.
-          </p>
-          <p>
-            With a relentless focus on quality ingredients, authentic recipes, and warm hospitality, the vision has always been to create a space where every cup tells a story and every guest leaves with a smile.
-          </p>
-          <p class="font-script text-2xl text-gold-soft pt-4">
-            "Coffee connects us. It's the beginning of every great idea."
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ MENU ============ -->
-<section id="menu" class="relative bg-ink py-28">
-  <div class="grain-overlay"></div>
-  <div class="relative mx-auto max-w-6xl px-6">
-    <div class="mb-12 text-center">
-      <span class="font-script text-2xl text-gold-soft">What we're pouring</span>
-      <h2 class="mt-1 font-display text-4xl text-cream sm:text-5xl">The Menu</h2>
-    </div>
-
-    <div class="mx-auto mb-10 max-w-md">
-      <div class="flex items-center gap-3 rounded-full border border-gold/25 bg-forest-dark/50 px-5 py-3">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input id="menuSearch" type="text" placeholder="Search the menu — try 'maggi' or 'shake'" class="w-full bg-transparent text-sm text-cream placeholder:text-cream/40 focus:outline-none" />
-      </div>
-    </div>
-
-    <div id="menuGrid" class="columns-1 md:columns-2 lg:columns-3 gap-8 sm:gap-12 w-full"></div>
-  </div>
-</section>
-
-<!-- ============ GALLERY ============ -->
-
-
-
-
-<!-- ============ TESTIMONIALS ============ -->
-<section class="relative bg-forest py-28">
-  <div class="grain-overlay"></div>
-  <div class="relative mx-auto max-w-3xl px-6 text-center">
-    <span class="font-script text-2xl text-gold-soft">In their words</span>
-    <h2 class="mt-1 mb-14 font-display text-4xl text-cream sm:text-5xl">Loved by Regulars</h2>
-    <div id="testimonialBox" class="relative">
-      <div id="testimonialSlide" class="testimonial-slide rounded-3xl border border-gold/20 bg-cream/[0.06] p-10 backdrop-blur-md"></div>
-      <div id="testimonialDots" class="mt-8 flex justify-center gap-2"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WATERBOTTLE ============ -->
-<section id="water" class="relative overflow-hidden bg-forest-dark py-24 border-t border-gold/10">
-  <div class="grain-overlay"></div>
-  <div class="relative mx-auto max-w-5xl px-6 flex flex-col md:flex-row items-center justify-center gap-12 sm:gap-20">
-    <div class="w-full md:w-1/2 flex justify-center reveal-left">
-      <img src="Waterbottle.png" alt="O'KLOK Pure Excellence Water Bottle" class="max-h-[450px] w-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] hover:scale-[1.03] transition-transform duration-700 ease-out" />
-    </div>
-    <div class="w-full md:w-1/2 text-center md:text-left reveal-right">
-      <span class="font-script text-3xl text-gold-soft">Stay Hydrated</span>
-      <h2 class="mt-2 font-display text-4xl text-cream sm:text-5xl leading-tight">Pure Excellence</h2>
-      <div class="mt-6 w-12 h-1 bg-gold mx-auto md:mx-0"></div>
-      <p class="mt-6 text-cream/80 text-lg leading-relaxed max-w-md mx-auto md:mx-0">
-        Refresh yourself on the go with our premium branded Oceana water. Perfectly pure, crisp, and refreshing—the ideal companion to your perfect cup of coffee.
-      </p>
-      <div class="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
-        <span class="inline-block rounded-full border border-gold/40 bg-gold/5 px-8 py-3 text-gold font-display text-xl tracking-wide shadow-gold">₹30</span>
-        <span class="text-sm text-cream/50 uppercase tracking-widest">1000ml Bottle</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
-<footer id="visit" class="relative border-t border-gold/15 bg-forest-dark pt-20">
-  <div class="mx-auto max-w-7xl px-6">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-16 text-center md:text-left">
-      <!-- Branding -->
-      <div class="flex flex-col items-center md:items-start">
-        <div class="flex items-center justify-center sm:justify-start">
-          <img src="Logo.png" alt="O'KLOK Logo" class="h-20 w-auto drop-shadow-md" />
-        </div>
-        <p class="mt-4 font-script text-2xl text-gold-soft tracking-wide">Refresh Yourself</p>
-        <div class="flex gap-4 mt-8">
-          <a href="#" aria-label="O'KLOK on Instagram" class="rounded-full border border-gold/25 p-3 text-cream/80 hover:border-gold hover:text-gold transition-colors">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
-          </a>
-          <a href="#" aria-label="O'KLOK on Facebook" class="rounded-full border border-gold/25 p-3 text-cream/80 hover:border-gold hover:text-gold transition-colors">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="https://wa.me/910000000000" aria-label="Message O'KLOK on WhatsApp" class="rounded-full border border-gold/25 p-3 text-cream/80 hover:border-gold hover:text-gold transition-colors">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 1 1-3.8-7.1"/><path d="M21 11.5 12 12l1-3"/><circle cx="12" cy="11.5" r="8.5" fill="none"/></svg>
-          </a>
-        </div>
-      </div>
-      
-      <!-- Quick Links -->
-      <div class="flex flex-col items-center md:items-start">
-        <h3 class="font-display text-2xl text-gold mb-6">Quick Links</h3>
-        <nav class="flex flex-col gap-4">
-          <a href="#hero" class="text-sm uppercase tracking-wider text-cream/80 hover:text-gold transition-colors">Home</a>
-          <a href="#story" class="text-sm uppercase tracking-wider text-cream/80 hover:text-gold transition-colors">Our Story</a>
-          <a href="#menu" class="text-sm uppercase tracking-wider text-cream/80 hover:text-gold transition-colors">Menu</a>
-        </nav>
-      </div>
-
-      <!-- Visit Us -->
-      <div class="flex flex-col items-center md:items-start">
-        <h3 class="font-display text-2xl text-gold mb-6">Visit Us</h3>
-        <address class="not-italic leading-relaxed text-cream/80 text-sm">
-          <span class="block">Raidurg Metro Station,</span>
-          <span class="block">Mindspace, Hitech City Road,</span>
-          <span class="block">Phase 2, beside TCS Gate C,</span>
-          <span class="block">towards Gachibowli,</span>
-          <span class="block mb-6">Hyderabad, Telangana 500081</span>
-        </address>
-        <div class="flex flex-col gap-3">
-          <a href="https://www.google.com/maps/search/?api=1&query=Raidurg%20Metro%20Station%2C%20Mindspace%2C%20Hitech%20City%20Road%2C%20Phase%202%2C%20Hyderabad%2C%20Telangana%20500081" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center md:justify-start gap-2 rounded-full border border-gold/40 px-6 py-2.5 text-xs font-medium uppercase tracking-wider text-gold transition-colors hover:bg-gold/10">📍 Open Maps</a>
-          <a href="tel:+910000000000" class="flex items-center justify-center md:justify-start gap-2 rounded-full border border-gold/40 px-6 py-2.5 text-xs font-medium uppercase tracking-wider text-gold transition-colors hover:bg-gold/10">📞 Call Now</a>
-        </div>
-      </div>
-    </div>
-    
-    <div class="divider-gold mt-20 mb-8"></div>
-    
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 pb-8 text-xs text-cream/50">
-      <p>© 2026 O'KLOK. All rights reserved.</p>
-      <p class="flex items-center gap-1.5">
-        Designed and developed by 
-        <a href="https://nsdigital.online/" target="_blank" rel="noopener noreferrer" class="text-gold hover:text-cream transition-colors border-b border-gold/30 hover:border-cream/50 pb-0.5 font-medium tracking-wide">NS Digital Marketing Agency</a>
-      </p>
-    </div>
-  </div>
-</footer>
-
-<!-- ============ SCRIPTS ============ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
+<footer><div class="wrap">
+<div class="cols">
+<div><a class="logo" href="#home" style="color:#fff;margin-bottom:12px"><i>☕</i>O'KLOK CAFE</a><p>Great coffee, comfort food, and a warm corner near Raidurg Metro Station — any o'klok is the right klok.</p></div>
+<div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#about">About Us</a></li><li><a href="#location">Location</a></li></ul></div>
+<div><h4>Menu</h4><ul><li>Coffee &amp; Tea</li><li>Juices &amp; Milkshakes</li><li>Sandwiches &amp; Rolls</li><li>Maggi &amp; Desserts</li></ul></div>
+<div><h4>Contact</h4><ul><li>📍 Raidurg Metro Station, Mindspace, Hitech City Road, Phase 2, beside TCS Gate C, Hyderabad 500081</li><li>📞 +91 98765 43210</li><li>✉️ <a href="mailto:hello@oklokcafe.com">hello@oklokcafe.com</a></li></ul></div>
+</div>
+<div class="copy">© 2026 O'KLOK CAFE. All rights reserved.</div>
+</div></footer>
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 <script>
-/* ---------- DATA ---------- */
-
-
-
-
-const menuData = [
-  { id:"coffee", label:"Coffee", icon:"☕", items:[["Filter Coffee",40],["Black Coffee",25],["Instant Coffee",30]] },
-  { id:"tea", label:"Tea", icon:"🍵", items:[["Tea",30],["Ginger Tea",35],["Masala Tea",30],["Green Tea",30],["Lemon Tea",30],["Black Tea",25],["Elaichi Tea",35],["Herbal Tea",30],["Jaggery Tea",30]] },
-  { id:"milk", label:"Milk", icon:"🥛", items:[["Boost",40],["Horlicks",40],["Bournvita",40],["Badam Milk",40]] },
-  { id:"bakery", label:"Bakery & Puffs", icon:"🥐", items:[["Aloo Samosa",25],["Corn Samosa (4 pcs)",35],["Onion Samosa (4 pcs)",35],["Veg Puff",25],["Egg Puff",30],["Chicken Puff",40],["Paneer Puff",35],["Bun Maska",30],["Dilkhush",30],["Veg Burger",60],["Chicken Puff Roll",70],["Paneer Spring Roll",60],["Chicken Samosa",35],["Guntur Chicken Burger",70],["Guntur Chicken Hotdog",70],["Paneer Cheese Roll",65],["Choco Lava",60],["Brownie Cookie",60],["Brownie Box",60]] },
-  { id:"rolls", label:"Rolls & Wraps", icon:"🌯", items:[["Egg Roll",70],["Veg Roll",60],["Paneer Roll",90],["Cheese Roll",90],["Paneer Cheese Roll",110],["Chicken Roll",120]] },
-  { id:"sandwiches", label:"Sandwiches", icon:"🥪", items:[["Veg Sandwich",50],["Egg Sandwich",70],["Cheese Sandwich",70],["Chicken Sandwich",80]] },
-  { id:"fries", label:"French Fries", icon:"🍟", items:[["French Fries",80],["Peri Peri French Fries",100]] },
-  { id:"juice", label:"Juice", icon:"🥤", items:[["Lime Soda Salt",40],["Sweet Lime",40],["Masala Lime",40],["Pineapple Juice",70],["Watermelon Juice",80],["Lime Juice",40],["Orange Juice",60],["Mango Juice",70],["Papaya Juice",70],["Sapota Juice",70],["Apple Juice",70],["Banana Juice",70],["Mosambi Juice",80]] },
-  { id:"crushers", label:"Crushers", icon:"🍧", items:[["Mango Crusher",60],["Pineapple Crusher",60],["Kiwi Crusher",60],["Kala Khatta Crusher",60]] },
-  { id:"desserts", label:"Desserts", icon:"🍰", items:[["Mulberry Delight",140],["Mango Delight",140]] },
-  { id:"shakes", label:"Milk Shakes", icon:"🥤", items:[["Mango Shake",80],["Papaya Shake",80],["Sapota Shake",80],["Apple Shake",100],["Avocado Shake",120],["Banana Shake",70],["Strawberry Shake",110],["Kiwi Shake",110],["Dragon Fruit Shake",100],["Oreo Shake",80],["Musk Melon Shake",90]] },
-  { id:"maggi", label:"Maggi", icon:"🍜", items:[["Plain Maggi",50],["Veg Maggi",60],["Cheese Maggi",90],["Egg Maggi",70],["Chicken Maggi",90],["Paneer Maggi",90],["Cheese Chicken Maggi",110]] },
-  { id:"breakfast", label:"Healthy Breakfast", icon:"🍳", items:[["Canadian Breakfast",100],["Bread Omelette",70],["Double Egg Omelette",50],["Fruit Bowl",120]] },
-  { id:"specials", label:"O'KLOK Specials", icon:"⭐", items:[["Kadapa Pannurli",60],["Mazza Cocktail",50],["Mango With Coffee",60],["Pineapple With Coffee",60]] },
-];
-
-
-
-const testimonials = [
-  { name:"Ananya Rao", role:"Regular, Hitech City", quote:"My filter coffee stop before every shift. Consistent, warm, and the staff remember my order.", rating:5 },
-  { name:"Karthik Reddy", role:"Software Engineer", quote:"Walked in for a quick chai, stayed for the Guntur chicken burger. Now it's a weekly habit.", rating:5 },
-  { name:"Sneha Iyer", role:"Marketing Lead", quote:"The masala tea here tastes like home. Quiet corner tables make it perfect for calls between meetings.", rating:4 },
-  { name:"Mohammed Faizan", role:"Student", quote:"Best value menu near Raidurg metro. The chicken maggi after late classes is unbeatable.", rating:5 },
-  { name:"Priya Deshmukh", role:"Designer", quote:"Loved the vintage interiors as much as the coffee. The badam milk is criminally good.", rating:5 },
-  { name:"Rahul Varma", role:"Founder, early-stage startup", quote:"We've taken half our investor calls from the corner table here. Great wifi, better coffee.", rating:4 },
-];
-
-/* ---------- NAVBAR ---------- */
-const navbar = document.getElementById("navbar");
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 40) {
-    navbar.classList.add("bg-forest-dark/90","backdrop-blur-md","border-b","border-gold/20","py-3");
-    navbar.classList.remove("py-6");
-  } else {
-    navbar.classList.remove("bg-forest-dark/90","backdrop-blur-md","border-b","border-gold/20","py-3");
-    navbar.classList.add("py-6");
-  }
-});
-const menuToggle = document.getElementById("menuToggle");
-const mobileMenu = document.getElementById("mobileMenu");
-const iconMenu = document.getElementById("iconMenu");
-const iconClose = document.getElementById("iconClose");
-menuToggle.addEventListener("click", () => {
-  mobileMenu.classList.toggle("hidden");
-  iconMenu.classList.toggle("hidden");
-  iconClose.classList.toggle("hidden");
-});
-mobileMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
-  mobileMenu.classList.add("hidden"); iconMenu.classList.remove("hidden"); iconClose.classList.add("hidden");
-}));
-
-gsap.registerPlugin(ScrollTrigger);
-
-
-
-/* generic reveal-on-scroll for .reveal / .reveal-left / .reveal-right */
-document.querySelectorAll(".reveal, .reveal-left, .reveal-right").forEach((el)=>{
-  ScrollTrigger.create({
-    trigger: el, start: "top 85%",
-    onEnter: () => el.classList.add("in-view"),
+  var typed = new Typed('.auto-type', {
+    strings: ['Always Open.', 'Ready 24x7.', 'Your Cozy Corner.', 'Any O\\'klok.'],
+    typeSpeed: 65,
+    backSpeed: 45,
+    backDelay: 2000,
+    loop: true
   });
-});
-
-/* ---------- OUR STORY: timeline logic removed ---------- */
-
-/* ---------- MENU ---------- */
-const menuGridEl = document.getElementById("menuGrid");
-
-function renderMenuGrid(query = "") {
-  const q = query.trim().toLowerCase();
-  let html = "";
-  let hasResults = false;
-
-  menuData.forEach((cat) => {
-    // Filter items in this category
-    const filteredItems = cat.items.filter(([name, price]) => {
-      return name.toLowerCase().includes(q);
-    });
-
-    if (filteredItems.length > 0) {
-      hasResults = true;
-      html += `
-        <div class="break-inside-avoid mb-8 sm:mb-12 rounded-3xl border border-gold/15 bg-forest-dark/40 p-6 sm:p-8 shadow-gold transition-transform hover:scale-[1.01]">
-          <h3 class="mb-6 flex items-center gap-3 font-display text-2xl text-gold">
-            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-xl shadow-inner">${cat.icon}</span>
-            ${cat.label}
-          </h3>
-          <ul class="flex flex-col gap-4">
-            ${filteredItems.map(([name, price]) => `
-              <li class="flex items-baseline justify-between gap-3 group cursor-default">
-                <span class="text-sm sm:text-base text-cream/90 group-hover:text-gold transition-colors leading-tight">${name}</span>
-                <div class="flex-1 border-b-2 border-dotted border-cream/20 opacity-50 relative top-[-5px]"></div>
-                <span class="flex-shrink-0 font-display text-base text-gold whitespace-nowrap tracking-wide">₹${price}</span>
-              </li>
-            `).join("")}
-          </ul>
-        </div>
-      `;
-    }
-  });
-
-  if (!hasResults) {
-    html = `<div class="col-span-full py-16 text-center text-cream/60"><span class="text-4xl mb-4 block">☕</span><p class="text-lg">No dishes match "${query}". Try a different word.</p></div>`;
-  }
-
-  menuGridEl.innerHTML = html;
-}
-
-document.getElementById("menuSearch").addEventListener("input", (e) => renderMenuGrid(e.target.value));
-renderMenuGrid();
-
-
-
-/* ---------- VISIT US: floating beans ---------- */
-const visitBeansEl = document.getElementById("visitBeans");
-for (let i=0;i<6;i++){
-  const span = document.createElement("span");
-  span.className = "pointer-events-none absolute h-3 w-2 rounded-full bg-gold/25 animate-float";
-  span.style.top = (10+((i*17)%80))+"%";
-  if (i%2===0) span.style.left = (4+i*3)+"%"; else span.style.right = (4+i*3)+"%";
-  span.style.animationDelay = (i*0.6)+"s";
-  visitBeansEl.appendChild(span);
-}
-
-/* ---------- TESTIMONIALS: auto-sliding carousel ---------- */
-let tIndex = 0;
-let tPaused = false;
-const slideEl = document.getElementById("testimonialSlide");
-const dotsEl = document.getElementById("testimonialDots");
-
-function starsHTML(rating){
-  let out = "";
-  for (let i=0;i<5;i++){
-    out += i < rating
-      ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="#D4AF37" stroke="#D4AF37"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>`
-      : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(212,175,55,0.2)"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>`;
-  }
-  return out;
-}
-
-function renderTestimonial() {
-  const t = testimonials[tIndex];
-  slideEl.style.opacity = 0;
-  slideEl.style.transform = "scale(0.92)";
-  setTimeout(()=>{
-    slideEl.innerHTML = `
-      <svg class="mx-auto mb-4 h-8 w-8 text-gold/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M7 7h4v6a4 4 0 0 1-4 4"/><path d="M15 7h4v6a4 4 0 0 1-4 4"/></svg>
-      <p class="font-display text-xl italic leading-relaxed text-cream sm:text-2xl">&ldquo;${t.quote}&rdquo;</p>
-      <div class="mt-6 flex justify-center gap-1">${starsHTML(t.rating)}</div>
-      <p class="mt-5 font-display text-base text-gold">${t.name}</p>
-      <p class="text-sm text-cream/50">${t.role}</p>
-    `;
-    slideEl.style.opacity = 1;
-    slideEl.style.transform = "scale(1)";
-  }, 220);
-
-  dotsEl.innerHTML = testimonials.map((_,i)=>`
-    <button aria-label="Show testimonial ${i+1}" data-i="${i}" class="h-2 rounded-full transition-all ${i===tIndex ? "w-6 bg-gold" : "w-2 bg-cream/25"}"></button>
-  `).join("");
-  dotsEl.querySelectorAll("button").forEach((btn)=> btn.addEventListener("click", ()=>{ tIndex = +btn.dataset.i; renderTestimonial(); }));
-}
-renderTestimonial();
-document.getElementById("testimonialBox").addEventListener("mouseenter", ()=> tPaused = true);
-document.getElementById("testimonialBox").addEventListener("mouseleave", ()=> tPaused = false);
-setInterval(()=>{ if(!tPaused){ tIndex = (tIndex+1) % testimonials.length; renderTestimonial(); } }, 5000);
-
-/* ---------- TYPEWRITER ANIMATION ---------- */
-const phrases = [
-  "Fresh Filter Coffee ☕",
-  "Black Coffee",
-  "Masala Tea",
-  "Milk Shakes",
-  "Rolls & Wraps",
-  "Sandwiches",
-  "French Fries",
-  "Maggi",
-  "Healthy Breakfast",
-  "Desserts",
-  "Fresh Juices",
-  "O'KLOK Specials",
-  "Community & Conversations",
-  "One Cup at a Time"
-];
-
-const twEl = document.getElementById("typewriter");
-let currentPhraseIdx = 0;
-let currentCharIdx = 0;
-let isDeleting = false;
-let twTimeout;
-
-function typeWriter() {
-  if (!twEl) return;
-  const currentPhrase = phrases[currentPhraseIdx];
-  
-  if (isDeleting) {
-    twEl.textContent = currentPhrase.substring(0, currentCharIdx - 1);
-    currentCharIdx--;
-  } else {
-    twEl.textContent = currentPhrase.substring(0, currentCharIdx + 1);
-    currentCharIdx++;
-  }
-
-  let typingSpeed = 60;
-  if (isDeleting) typingSpeed = 35;
-
-  if (!isDeleting && currentCharIdx === currentPhrase.length) {
-    typingSpeed = 1500; // Pause at end of phrase
-    isDeleting = true;
-  } else if (isDeleting && currentCharIdx === 0) {
-    isDeleting = false;
-    currentPhraseIdx = (currentPhraseIdx + 1) % phrases.length;
-    typingSpeed = 500; // Pause before typing new phrase
-  }
-
-  twTimeout = setTimeout(typeWriter, typingSpeed);
-}
-typeWriter();
-
-/* refresh ScrollTrigger after all dynamic content is in the DOM */
-ScrollTrigger.refresh();
 </script>
 </body>
 </html>
